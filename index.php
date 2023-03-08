@@ -21,14 +21,15 @@
 
 </head>
 <body>
-        <div class="wrapper">
+    <div class="wrapper">
     <?php
-        include "aside.php";
+        // include "aside.php";
     ?>
         <div class="container mt-2">
             <div class="row">
                 <div class="col">
-                    <table id="example" class="table display nowrap"  style="width:100%">
+
+                    <table id="example" class="table table-dark table-striped table-hover"  style="width:100%">
                         <thead>
                             <tr>
                                 <th>Name</th>
