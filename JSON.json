@@ -1,0 +1,193 @@
+[{
+    "id": "1",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "2",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "3",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  },
+  {
+    "id": "4",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "5",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "6",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  },
+  {
+    "id": "7",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "8",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "9",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  },
+  {
+    "id": "1",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "10",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "11",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  },
+  {
+    "id": "12",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "13",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "14",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  },
+  {
+    "id": "15",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "16",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "17",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  },
+  {
+    "id": "18",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "19",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "20",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  },
+  {
+    "id": "21",
+    "nombre": "Juan Pérez",
+    "usuario": "juanperez",
+    "perfil": "Administrador",
+    "estado": "Activo",
+    "foto": "foto1.jpg"
+  },
+  {
+    "id": "22",
+    "nombre": "María García",
+    "usuario": "mariagarcia",
+    "perfil": "Usuario",
+    "estado": "Inactivo",
+    "foto": "foto2.jpg"
+  },
+  {
+    "id": "23",
+    "nombre": "Pedro Ramírez",
+    "usuario": "pedroramirez",
+    "perfil": "Usuario",
+    "estado": "Activo",
+    "foto": "foto3.jpg"
+  }
+] 
