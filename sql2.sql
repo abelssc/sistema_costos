@@ -172,11 +172,29 @@ VALUES
 ('mmartinez', 'secreto456', 'gerente', 1),
 ('ABEL', 'ABELABED', 'usuario', 3);
 
-INSERT INTO categorias (categoria)
-VALUES ('Electrodomésticos');
-INSERT INTO categorias (categoria)
-VALUES ('Herramientas');
-
+INSERT INTO categorias (categoria) VALUES
+('Electrodomésticos'),
+('Herramientas'),
+('Ropa'),
+('Electrónica'),
+('Hogar'),
+('Juguetes'),
+('Alimentos'),
+('Muebles'),
+('Libros'),
+('Cosméticos'),
+('Automóviles'),
+('Bebidas'),
+('Deportes'),
+('Mascotas'),
+('Jardín'),
+('Joyería'),
+('Cine'),
+('Viajes'),
+('Instrumentos'),
+('Salud'),
+('Arte'),
+('Software');
 
 INSERT INTO unidades_medidas (tipo_unidad_medida, nombre_unidad_medida, abreviatura_unidad_medida)
 VALUES ('Longitud', 'Metros', 'm');
@@ -201,14 +219,27 @@ VALUES
 ('venta', 'salida', 	'VENT-001', 	'2022-02-02 10:15:00', 1500.00, 	270.00, 1, 2),
 ('compra','entrada',	'COMP-002', 	'2022-01-15 10:30:00', 2000,		360, 1, 2),
 ('venta', 'salida',		'VENT-002',	'	2022-02-25 15:45:00', 3000,			540, 2, 3),
-('ajuste', 'entrada',	'AJUST-001',	'2022-03-10 09:00:00', 1000,		180, 3, 1);
+('ajuste', 'entrada',	'AJUST-001',	'2022-03-10 09:00:00', 1000,		180, 3, 1),
+('compra', 'entrada', 'COD1', '2023-03-10 10:00:00', 100.00, 18.00, 1, 1),
+('compra', 'entrada', 'COD2', '2023-03-10 11:00:00', 200.00, 36.00, 2, 2),
+('compra', 'entrada', 'COD3', '2023-03-10 12:00:00', 300.00, 54.00, 3, 3),
+('venta', 'salida', 'VNTD1', '2023-04-10 10:00:00', 150.00, 38.00, 1, 1),
+('venta', 'salida', 'VNTD2', '2023-04-10 11:00:00', 250.00, 46.00, 2, 2),
+('venta', 'salida', 'VNTD3', '2023-04-10 12:00:00', 400.00, 70.00, 3, 3);
 
 INSERT INTO detalles(movimientos_id, productos_id, cantidad, valor_unitario, precio_unitario)
 VALUES 
 (1, 1, 10, 2.50, 3.00),
 (1, 2, 5, 3.00, 3.60),
 (2, 3, 8, 1.75, 2.10),
-(3, 4, 15, 1.20, 1.44);
+(3, 4, 15, 1.20, 1.44),
+(6, 1, 10, 20, 30),
+(6, 1, 5, 3.00, 3.60),
+(7, 1, 8, 50, 70),
+(8, 1, 15, 100, 120),
+(9, 1, 15, 20, 40),
+(10, 1, 20, 30, 50),
+(11, 1,30, 50, 60);
 
 INSERT INTO pagos_ventas(movimientos_id, tipo_pago, monto, fecha)
 VALUES (1, 'contado', 30.00, '2022-02-20 10:30:00'),

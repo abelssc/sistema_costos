@@ -3,7 +3,7 @@
         const HOST="localhost";
         const USER="root";
         const PASSWORD="";
-        const DATABASE="gestion_alumnos";
+        const DATABASE="sistema_grano_de_oro";
 
         public static function getConexion(){
             try {
