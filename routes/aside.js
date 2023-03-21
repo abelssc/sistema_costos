@@ -43,6 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
                                 $tabla.push({ data: "telefono" });
                                 $tabla.push({ data: "updated" });
                             }
+                            else if(route.dataset.route =="usuarios"){
+                                $tabla.push({ data: "id" });
+                                $tabla.push({ data: "usuario" });
+                                $tabla.push({ data: "nombre" });
+                                $tabla.push({ data: "apellido" });
+                                $tabla.push({ data: "cargo" });
+                                $tabla.push({ data: "activo" });
+                                $tabla.push({ data: "updated" });
+                            }
                             else if(route.dataset.route =="categorias"){
                                 $tabla.push({ data: "id" });
                                 $tabla.push({ data: "categoria" });
@@ -115,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                           
                             datatable = $("#dataTable").DataTable({
                                 ajax: {
-                                    "url": `http://localhost/grano_de_oro/api.php/${route.dataset.route}}`,
+                                    "url": `http://localhost/grano_de_oro/api.php/view_${route.dataset.route}`,
                                     "dataSrc": '',
                                     "cache":true
                                 },

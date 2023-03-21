@@ -260,7 +260,8 @@ WHERE k.id IN (select max(id) from kardex group by productos_id);
 /* 
 ** TRIGGERS
 */
-delimiter  //
+DROP TRIGGER IF EXISTS insert_kardex_compras;
+DELIMITER //
 CREATE TRIGGER insert_kardex_compras AFTER INSERT ON detalle_compra
 FOR EACH ROW
 BEGIN
@@ -273,18 +274,30 @@ BEGIN
     DECLARE saldos_pu_new decimal(10,2);
     DECLARE saldos_pt_new decimal(10,2);
     
-	SELECT p.proveedor,c.codigo,c.fecha INTO proveedor_new,codigo_new,fecha_new FROM detalle_compra dc
+	SELECT p.razon_social_nombres,c.codigo,c.fecha INTO proveedor_new,codigo_new,fecha_new FROM detalle_compra dc
     JOIN  compras c ON dc.compras_id=c.id
     JOIN proveedores p ON p.id=c.proveedores_id
-    WHERE dc.compras_id=NEW.compras_id;
-
-    SELECT saldos_cant+NEW.cantidad, (saldos_pu*saldos_cant+NEW.cantidad*NEW.valor_unitario)/(saldos_cant+NEW.cantidad), saldos_pt FROM kardex WHERE id = (SELECT MAX(id) FROM kardex WHERE productos_id = NEW.productos_id) INTO saldos_cant_new, saldos_pu_new, saldos_pt_new;
+    WHERE dc.compras_id=NEW.compras_id
+    LIMIT 1;
+    
+	IF (SELECT MAX(id) FROM kardex WHERE productos_id = NEW.productos_id)>0 THEN
+		SELECT 
+		saldos_cant+NEW.cantidad, 
+		(saldos_pu*saldos_cant+NEW.cantidad*NEW.valor_unitario)/(saldos_cant+NEW.cantidad),
+		(saldos_cant+NEW.cantidad) * (saldos_pu*saldos_cant+NEW.cantidad*NEW.valor_unitario)/(saldos_cant+NEW.cantidad)
+		FROM kardex WHERE id = (SELECT MAX(id) FROM kardex WHERE productos_id = NEW.productos_id) INTO saldos_cant_new, saldos_pu_new, saldos_pt_new;
+	ELSE 
+		SET saldos_cant_new=NEW.cantidad;
+        SET saldos_pu_new=NEW.valor_unitario;
+        SET saldos_pt_new=saldos_cant_new*saldos_pu_new;
+    END IF;
+   
 
 	INSERT INTO kardex (productos_id, codigo, fecha, detalle, tipo, cantidad, costo_unit, costo_final, 
     saldos_cant, saldos_pu, saldos_pt)
-    VALUES (NEW.productos_id,NEW.codigo,NEW.fecha,CONCAT("COMPRA AL PROVEEDOR ",proveedor_nombre),'entrada',NEW.cantidad,NEW.valor_unitario,NEW.cantidad*NEW.valor_unitario,saldos_cant_new,saldos_pu_new,saldos_pt_new);
-END //
-delimiter ;
+    VALUES (NEW.productos_id,codigo_new,fecha_new,CONCAT("COMPRA AL PROVEEDOR ",proveedor_new),'entrada',NEW.cantidad,NEW.valor_unitario,NEW.cantidad*NEW.valor_unitario,saldos_cant_new,saldos_pu_new,saldos_pt_new);
+END//
+DELIMITER ;
 CREATE TABLE detalle_compra(
 id INT NOT NULL AUTO_INCREMENT,
 compras_id INT NOT NULL,

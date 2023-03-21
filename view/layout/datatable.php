@@ -8,7 +8,10 @@ else if ($_GET["tabla"] == "clientes") {
     $columnasTabla = ["id", "Cliente", "RUC/DNI", "Direccion","Sector", "Mercado", "Giro", "Distrito", "Tipo de Cliente","Telefono","Updated"];
 }  
 else if ($_GET["tabla"] == "proveedores") {
-    $columnasTabla = ["id", "Proveedor", "RUC/DNI", "Direccion","Sector", "Mercado", "Giro", "Distrito", "Tipo de Cliente","Telefono","Updated"];
+    $columnasTabla = ["id", "Proveedor", "RUC/DNI", "Direccion", "Telefono","Updated"];
+}
+else if ($_GET["tabla"] == "usuarios") {
+    $columnasTabla = ["id", "Usuario", "Nombre", "Apellido", "Cargo","Activo","Updated"];
 }
 
 else if ($_GET["tabla"] == "categorias") {
