@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             document.querySelector(".aside-routes .route.active").classList.remove("active");
             route.classList.add("active");
+      
             fetch(`http://localhost/grano_de_oro/view/modulos/${route.dataset.route}.php`)
                 .then(rs => rs.text())
                 .then(html => {
@@ -121,48 +122,112 @@ document.addEventListener("DOMContentLoaded", () => {
                                 $tabla.push({ data: "total_venta" });
                                 $tabla.push({ data: "total_utilidad" });
                             }
-                          
-                            datatable = $("#dataTable").DataTable({
-                                ajax: {
-                                    "url": `http://localhost/grano_de_oro/api.php/view_${route.dataset.route}`,
-                                    "dataSrc": '',
-                                    "cache":true
-                                },
-                                columns: $tabla,
-                                dom: '<"d-flex justify-content-between flex-wrap"Bf>t<"bottom d-flex justify-content-between flex-wrap"lip>',
-                                order: [[0, "desc"]],
-                                responsive: true,
-                                lengthChange: false,
-                                autoWidth: false,
-                                buttons: ["copy", "csv", "excel", "pdf", "print", "colvis","pageLength"],
-                                "pageLength": 20,
-                                lengthMenu: [
-                                    [ 10, 25, 50, -1 ],
-                                    [ '10 rows', '25 rows', '50 rows', 'Show all' ]
-                                ],
-                                language: {
-                                    "decimal": "",
-                                    "emptyTable": "No hay información",
-                                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                                    "infoPostFix": "",
-                                    "thousands": ",",
-                                    "lengthMenu": "Mostrar _MENU_ Entradas",
-                                    "loadingRecords": "Cargando...",
-                                    "processing": "Procesando...",
-                                    "search": "Buscar:",
-                                    "zeroRecords": "Sin resultados encontrados",
-                                    "paginate": {
-                                        "first": "Primero",
-                                        "last": "Ultimo",
-                                        "next": "->",
-                                        "previous": "<-"
+                            if(route.dataset.route!=="kardex"){
+                                datatable = $("#dataTable").DataTable({
+                                    ajax: {
+                                        "url": `http://localhost/grano_de_oro/api.php/view_${route.dataset.route}`,
+                                        "dataSrc": '',
+                                        "cache":true
+                                    },
+                                    columns: $tabla,
+                                    dom: '<"d-flex justify-content-between flex-wrap"Bf>t<"bottom d-flex justify-content-between flex-wrap"lip>',
+                                    order: [[0, "desc"]],
+                                    responsive: true,
+                                    lengthChange: false,
+                                    autoWidth: false,
+                                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis","pageLength"],
+                                    "pageLength": 20,
+                                    lengthMenu: [
+                                        [ 10, 25, 50, -1 ],
+                                        [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                                    ],
+                                    language: {
+                                        "decimal": "",
+                                        "emptyTable": "No hay información",
+                                        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                                        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                                        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                                        "infoPostFix": "",
+                                        "thousands": ",",
+                                        "lengthMenu": "Mostrar _MENU_ Entradas",
+                                        "loadingRecords": "Cargando...",
+                                        "processing": "Procesando...",
+                                        "search": "Buscar:",
+                                        "zeroRecords": "Sin resultados encontrados",
+                                        "paginate": {
+                                            "first": "Primero",
+                                            "last": "Ultimo",
+                                            "next": "->",
+                                            "previous": "<-"
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
+                           
                         })
                 })
         });
     });
+    document.addEventListener("submit",e=>{
+        if(e.target.id=="formKardex"){
+            e.preventDefault();
+            $("#dataTable").DataTable().destroy();
+            let idProducto = $("input[name='idProducto']").val();
+
+            datatable = $("#dataTable").DataTable({
+                ajax: {
+                    "url": `http://localhost/grano_de_oro/procedure.php/sp_kardex/${idProducto}`,
+                    "dataSrc": '',
+                    "cache": true
+                },
+                columns: [
+                    {data:"codigo"},
+                    {data:"fecha"},
+                    {data:"detalle"},
+                    {data:"entrada_cantidad"},
+                    {data:"entrada_costo_unit"},
+                    {data:"entrada_costo_final"},
+                    {data:"salida_cantidad"},
+                    {data:"salida_costo_unit"},
+                    {data:"salida_costo_final"},
+                    {data:"saldos_cant"},
+                    {data:"saldos_pu"},
+                    {data:"saldos_pt"}
+            ],
+                dom: '<"d-flex justify-content-between flex-wrap"Bf>t<"bottom d-flex justify-content-between flex-wrap"lip>',
+                order: [
+                    [0, "desc"]
+                ],
+                responsive: true,
+                lengthChange: false,
+                autoWidth: false,
+                buttons: ["copy", "csv", "excel", "pdf", "print", "colvis", "pageLength"],
+                "pageLength": 20,
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 rows', '25 rows', '50 rows', 'Show all']
+                ],
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "->",
+                        "previous": "<-"
+                    }
+                }
+            });
+        }
+    })
 });

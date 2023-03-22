@@ -48,4 +48,9 @@ class GetModel{
         return $stmt->fetchAll(PDO::FETCH_COLUMN,0);
         
     }
+    public function getProcedure($procedure){
+        $stmt=$this->dbh->prepare("$procedure");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -132,7 +132,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href=kardex" class="nav-link route" data-route=kardex">
+                            <a href="kardex" class="nav-link route" data-route="kardex">
                                 <i class="nav-icon fa fa-chart-line"></i>
                                 <p>
                                     Kardex

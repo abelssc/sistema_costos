@@ -129,7 +129,10 @@ class GetController
  
         //EJECUTAMOS
         return $this->model->getData($this->sentence_embed,$this->sentence_filter,$this->sentence_order,$this->sentence_page);
-    }   
+    } 
+    public function getProcedure($id){
+        return $this->model->getProcedure("CALL $this->table($id)");
+    }  
 
  
 }

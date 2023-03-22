@@ -28,21 +28,21 @@ else if ($_GET["tabla"] == "compras") {
     $columnasTabla = ["Fecha","Boleta/Factura","T/Pago","Nro. de Boleta/Factura","Total Compra","Proveedor","Estado"];
 }
 
-else if($_GET["reporte_inventario"]){
+else if($_GET["tabla"]=="reporte_inventario"){
     $columnasTabla=["Código Producto","Nombre Producto","Stock","Stock Mínimo","Stock Máximo","Costo","Total"];
 }
-else if($_GET["reporte_ventas"]){
+else if($_GET["tabla"]=="reporte_ventas"){
     $columnasTabla=["Fecha","Nro. de Boleta/Factura","Producto","Cantidad Caja","Unid","Precio","Total"];
 }
-else if($_GET["reporte_compras"]){
+else if($_GET["tabla"]=="reporte_compras"){
     $columnasTabla=["Fecha","Nro. de Boleta/Factura","Producto","Cantidad Caja","Unid","Costo","Total"];
 }
-else if($_GET["reporte_utilidades"]){
+else if($_GET["tabla"]=="reporte_utilidades"){
     $columnasTabla=["Fecha","Nro. de Boleta/Factura","Cliente","Total Costo","Total Venta","Total Utilidad"];
 }
-// else if($_GET["kardex"]){
-//     $columnasTabla=["Fecha","Detalle",""];
-// }
+else if($_GET["tabla"]=="kardex"){
+    $columnasTabla=["Codigo","Fecha","Detalle","Entrada Cantidad","Entrada Costo Unit","Entrada Costo Final","Salida Cantidad","Salida Costo Unit","Salida Costo Final","Saldos Cant","Saldos PU","Saldos PT"];
+} 
 
 
 $columnas_js = array();

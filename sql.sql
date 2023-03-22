@@ -207,8 +207,8 @@ cantidad int not null,
 costo_unit decimal(10,2) not null,
 costo_final decimal(10,2) not null,
 saldos_cant int not null,
-saldos_pu decimal not null,
-saldos_pt decimal not null,
+saldos_pu decimal(10,2) not null,
+saldos_pt decimal(10,2) not null,
 primary key(id,productos_id),
 foreign key(productos_id) references productos(id)
 );
@@ -298,6 +298,62 @@ BEGIN
     VALUES (NEW.productos_id,codigo_new,fecha_new,CONCAT("COMPRA AL PROVEEDOR ",proveedor_new),'entrada',NEW.cantidad,NEW.valor_unitario,NEW.cantidad*NEW.valor_unitario,saldos_cant_new,saldos_pu_new,saldos_pt_new);
 END//
 DELIMITER ;
+
+DROP TRIGGER IF EXISTS insert_kardex_ventas;
+DELIMITER //
+CREATE TRIGGER insert_kardex_ventas AFTER INSERT ON detalle_venta
+FOR EACH ROW
+BEGIN
+	DECLARE cliente_new varchar(255);
+    
+    DECLARE codigo_new varchar(255);
+	DECLARE fecha_new date;
+    
+    DECLARE saldos_cant_new INT;
+    DECLARE saldos_pu_new decimal(10,2);
+    DECLARE saldos_pt_new decimal(10,2);
+    
+	SELECT c.razon_social_nombres,v.codigo,v.fecha INTO cliente_new,codigo_new,fecha_new FROM detalle_venta dv
+    JOIN  ventas v ON dv.ventas_id=v.id
+    JOIN clientes c ON c.id=v.clientes_id
+    WHERE dv.ventas_id=NEW.ventas_id
+    LIMIT 1;
+    
+	IF (SELECT MAX(id) FROM kardex WHERE productos_id = NEW.productos_id)>0 THEN
+		SELECT 
+		saldos_cant-NEW.cantidad, 
+		saldos_pu,
+		(saldos_cant-NEW.cantidad) * (saldos_pu)
+		FROM kardex WHERE id = (SELECT MAX(id) FROM kardex WHERE productos_id = NEW.productos_id) INTO saldos_cant_new, saldos_pu_new, saldos_pt_new;
+	ELSE 
+		SET saldos_cant_new=-NEW.cantidad;
+        SET saldos_pu_new=0;
+        SET saldos_pt_new=0;
+    END IF;
+   
+
+	INSERT INTO kardex (productos_id, codigo, fecha, detalle, tipo, cantidad, costo_unit, costo_final, 
+    saldos_cant, saldos_pu, saldos_pt)
+    VALUES (NEW.productos_id,codigo_new,fecha_new,CONCAT("VENTA AL CLIENTE ",cliente_new),'salida',NEW.cantidad,saldos_pu_new,NEW.cantidad*saldos_pu_new,saldos_cant_new,saldos_pu_new,saldos_pt_new);
+END//
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_kardex(IN _id int)
+BEGIN
+SELECT codigo,fecha,detalle,
+IF(tipo='entrada',cantidad,'') as entrada_cantidad, 
+IF(tipo='entrada',costo_unit,'') as entrada_costo_unit, 
+IF(tipo='entrada',costo_final,'') as entrada_costo_final,
+IF(tipo='salida',cantidad,'') as salida_cantidad, 
+IF(tipo='salida',costo_unit,'') as salida_costo_unit, 
+IF(tipo='salida',costo_final,'') as salida_costo_final,
+saldos_cant,saldos_pu,saldos_pt
+FROM kardex 
+WHERE productos_id=_id;
+END $$
+DELIMITER ;
+
 CREATE TABLE detalle_compra(
 id INT NOT NULL AUTO_INCREMENT,
 compras_id INT NOT NULL,
