@@ -29,7 +29,7 @@ require 'config/dirs.php';
     <?php include LAYOUT_PATH . 'aside.php' ?>
 
     <div class="content-wrapper">
-      <?php include LAYOUT_PATH . 'main.php' ?>
+      <?php include  MODULOS_PATH. 'tablero.php' ?>
      
     </div>
 

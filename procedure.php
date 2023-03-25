@@ -31,7 +31,15 @@ function obtenerDatosdelaURL(){
     }
     $datosURL=obtenerDatosdelaURL();
     include(CONTROLLERS_PATH . $datosURL['method'] . '.php');
+    $class = new GetController($datosURL['tabla']);
     if ($datosURL['method'] === "GET") {
-        $class = new GetController($datosURL['tabla']);
-        echo json_encode($class->getProcedure($datosURL['id']));
+        if($_GET['intec']=="kardex"){
+            echo json_encode($class->getProcedure($datosURL['id']));
+        }
+        if($_GET['intec']=="utilidad_bruta"){
+            echo json_encode($class->getUtilidadbruta($_GET['fecha_inicio'],$_GET['fecha_fin']));
+        }
+        else{
+            echo json_encode("hm....");
+        }
     }

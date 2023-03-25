@@ -53,4 +53,9 @@ class GetModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getUtilidadbruta($procedure){
+        $stmt=$this->dbh->prepare("$procedure");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

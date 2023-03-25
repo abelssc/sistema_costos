@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(rs => rs.text())
                 .then(html => {
                     document.querySelector(".content-wrapper").innerHTML = html;
-                    if(route.dataset.route == "tablero"){return};
+                    if(route.dataset.info == "noAutoStartDatatable"){return};
                     fetch(`http://localhost/grano_de_oro/view/layout/datatable.php?tabla=${route.dataset.route}`)
                         .then(res => res.text())
                         .then(html => {
@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                 $tabla.push({ data: "total_venta" });
                                 $tabla.push({ data: "total_utilidad" });
                             }
-                            if(route.dataset.route!=="kardex"){
-                                datatable = $("#dataTable").DataTable({
+                            
+                            datatable = $("#dataTable").DataTable({
                                     ajax: {
                                         "url": `http://localhost/grano_de_oro/api.php/view_${route.dataset.route}`,
                                         "dataSrc": '',
@@ -161,26 +161,26 @@ document.addEventListener("DOMContentLoaded", () => {
                                             "previous": "<-"
                                         }
                                     }
-                                });
-                            }
+                            });
+                            
                            
                         })
                 })
         });
     });
     document.addEventListener("submit",e=>{
+        e.preventDefault();
         if(e.target.id=="formKardex"){
-            e.preventDefault();
             $("#dataTable").DataTable().destroy();
-            let idProducto = $("input[name='idProducto']").val();
-
+            let idProducto = $("input[name='idProducto']").val();  
             datatable = $("#dataTable").DataTable({
                 ajax: {
-                    "url": `http://localhost/grano_de_oro/procedure.php/sp_kardex/${idProducto}`,
+                    "url": `http://localhost/grano_de_oro/procedure.php/sp_kardex/${idProducto}?intec=kardex`,
                     "dataSrc": '',
                     "cache": true
                 },
                 columns: [
+                    {data:"id"},
                     {data:"codigo"},
                     {data:"fecha"},
                     {data:"detalle"},
@@ -193,10 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     {data:"saldos_cant"},
                     {data:"saldos_pu"},
                     {data:"saldos_pt"}
-            ],
+                ],
                 dom: '<"d-flex justify-content-between flex-wrap"Bf>t<"bottom d-flex justify-content-between flex-wrap"lip>',
                 order: [
-                    [0, "desc"]
+                    [0, "asc"]
                 ],
                 responsive: true,
                 lengthChange: false,
@@ -229,5 +229,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+        if(e.target.id=="formEstadoResultados"){
+            console.log(e.target);
+            console.log(e.target.fecha_inicio.value);
+            console.log(e.target.fecha_fin.value);
+            fetch(`http://localhost/grano_de_oro/procedure.php/sp_utilidad_bruta?fecha_inicio=${e.target.fecha_inicio.value}&fecha_fin=${e.target.fecha_fin.value}&intec=utilidad_bruta`)
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                document.getElementById("ingresos_totales").innerHTML = data._ingresos_totales;
+                document.getElementById("costos_totales").innerHTML = data._costos_totales;
+                document.getElementById("utilidad_bruta").innerHTML = data._utilidad_bruta;
+            })
+
+        }
+
     })
 });

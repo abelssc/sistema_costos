@@ -29,7 +29,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column  aside-routes" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="./" class="nav-link route active" data-route="tablero">
+                    <a href="./" class="nav-link route active" data-route="tablero" data-info="noAutoStartDatatable">
                         <i class="nav-icon fa fa-chart-bar"></i>
                         <p>
                             Tablero
@@ -100,7 +100,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="reporte_ventas" class="nav-link route" data-route="reporte_ventas">
+                            <a href="reporte_ventas" class="nav-link route" data-route="reporte_ventas"
+                            data-info="noAutoStartDatatable">
                                 <i class="nav-icon fa fa-chart-line"></i>
                                 <p>
                                     Reporte de Ventas
@@ -108,7 +109,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="reporte_compras" class="nav-link route" data-route="reporte_compras">
+                            <a href="reporte_compras" class="nav-link route" data-route="reporte_compras"
+                            data-info="noAutoStartDatatable">
                                 <i class="nav-icon fa fa-chart-line"></i>
                                 <p>
                                     Reporte de Compras
@@ -124,7 +126,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="reporte_utilidades" class="nav-link route" data-route="reporte_utilidades">
+                            <a href="reporte_utilidades" class="nav-link route" data-route="reporte_utilidades"
+                            data-info="noAutoStartDatatable">
                                 <i class="nav-icon fa fa-chart-line"></i>
                                 <p>
                                     Reporte de Utilidades
@@ -132,7 +135,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="kardex" class="nav-link route" data-route="kardex">
+                            <a href="kardex" class="nav-link route" data-route="kardex"
+                            data-info="noAutoStartDatatable">
                                 <i class="nav-icon fa fa-chart-line"></i>
                                 <p>
                                     Kardex
@@ -143,7 +147,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="gastos" class="nav-link route" data-route="gastos">
+                    <a href="gastos" class="nav-link route" data-route="gastos"
+                    data-info="noAutoStartDatatable">
                         <i class="nav-icon fa fa-money-check-alt"></i>
                         <p>
                             Gastos
@@ -151,7 +156,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="caja" class="nav-link route" data-route="caja">
+                    <a href="caja" class="nav-link route" data-route="caja"
+                    data-info="noAutoStartDatatable">
                         <i class="nav-icon fa fa-cash-register"></i>
                         <p>
                             Caja

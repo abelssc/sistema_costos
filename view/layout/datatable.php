@@ -41,7 +41,7 @@ else if($_GET["tabla"]=="reporte_utilidades"){
     $columnasTabla=["Fecha","Nro. de Boleta/Factura","Cliente","Total Costo","Total Venta","Total Utilidad"];
 }
 else if($_GET["tabla"]=="kardex"){
-    $columnasTabla=["Codigo","Fecha","Detalle","Entrada Cantidad","Entrada Costo Unit","Entrada Costo Final","Salida Cantidad","Salida Costo Unit","Salida Costo Final","Saldos Cant","Saldos PU","Saldos PT"];
+    $columnasTabla=["id","Codigo","Fecha","Detalle","Entrada Cantidad","Entrada Costo Unit","Entrada Costo Final","Salida Cantidad","Salida Costo Unit","Salida Costo Final","Saldos Cant","Saldos PU","Saldos PT"];
 } 
 
 

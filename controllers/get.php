@@ -133,6 +133,9 @@ class GetController
     public function getProcedure($id){
         return $this->model->getProcedure("CALL $this->table($id)");
     }  
+    public function getUtilidadbruta($fecha_inicio,$fecha_fin){
+        return $this->model->getUtilidadbruta("CALL $this->table('$fecha_inicio','$fecha_fin')");
+    }
 
  
 }
