@@ -662,7 +662,7 @@ CREATE TABLE `view_vendedores` (
 --
 DROP TABLE IF EXISTS `view_categorias`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_categorias`  AS SELECT `c`.`id` AS `id`, `c`.`categoria` AS `categoria`, `c`.`updated` AS `updated` FROM `categorias` AS `c``c`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_categorias`  AS SELECT `c`.`id` AS `id`, `c`.`categoria` AS `categoria`, `c`.`updated` AS `updated` FROM `categorias` AS `c`  ;
 
 -- --------------------------------------------------------
 
@@ -671,7 +671,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_clientes`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_clientes`  AS SELECT `c`.`id` AS `id`, `c`.`razon_social_nombres` AS `cliente`, `c`.`ruc_dni` AS `ruc_dni`, `c`.`direccion` AS `direccion`, `c`.`sector` AS `sector`, `c`.`mercado` AS `mercado`, `c`.`giro` AS `giro`, `c`.`distrito` AS `distrito`, `c`.`tipo_cliente` AS `tipo_cliente`, `c`.`telefono1` AS `telefono`, `c`.`updated` AS `updated` FROM `clientes` AS `c``c`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_clientes`  AS SELECT `c`.`id` AS `id`, `c`.`razon_social_nombres` AS `cliente`, `c`.`ruc_dni` AS `ruc_dni`, `c`.`direccion` AS `direccion`, `c`.`sector` AS `sector`, `c`.`mercado` AS `mercado`, `c`.`giro` AS `giro`, `c`.`distrito` AS `distrito`, `c`.`tipo_cliente` AS `tipo_cliente`, `c`.`telefono1` AS `telefono`, `c`.`updated` AS `updated` FROM `clientes` AS `c`;
 
 -- --------------------------------------------------------
 
@@ -689,7 +689,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_proveedores`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_proveedores`  AS SELECT `p`.`id` AS `id`, `p`.`ruc_dni` AS `ruc_dni`, `p`.`razon_social_nombres` AS `proveedor`, `p`.`telefono1` AS `telefono`, `p`.`direccion` AS `direccion`, `p`.`updated` AS `updated` FROM `proveedores` AS `p``p`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_proveedores`  AS SELECT `p`.`id` AS `id`, `p`.`ruc_dni` AS `ruc_dni`, `p`.`razon_social_nombres` AS `proveedor`, `p`.`telefono1` AS `telefono`, `p`.`direccion` AS `direccion`, `p`.`updated` AS `updated` FROM `proveedores` AS `p`;
 
 -- --------------------------------------------------------
 
@@ -707,7 +707,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_usuarios`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_usuarios`  AS SELECT `usuarios`.`id` AS `id`, `usuarios`.`usuario` AS `usuario`, `usuarios`.`nombre` AS `nombre`, `usuarios`.`apellido` AS `apellido`, `usuarios`.`cargo` AS `cargo`, `usuarios`.`activo` AS `activo`, `usuarios`.`updated` AS `updated` FROM `usuarios``usuarios`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_usuarios`  AS SELECT `usuarios`.`id` AS `id`, `usuarios`.`usuario` AS `usuario`, `usuarios`.`nombre` AS `nombre`, `usuarios`.`apellido` AS `apellido`, `usuarios`.`cargo` AS `cargo`, `usuarios`.`activo` AS `activo`, `usuarios`.`updated` AS `updated` FROM `usuarios`;
 
 -- --------------------------------------------------------
 
@@ -716,7 +716,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_vendedores`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_vendedores`  AS SELECT `vendedores`.`id` AS `id`, `vendedores`.`codigo_vendedor` AS `codigo_vendedor`, `vendedores`.`vendedor` AS `vendedor`, `vendedores`.`estado` AS `estado` FROM `vendedores``vendedores`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_vendedores`  AS SELECT `vendedores`.`id` AS `id`, `vendedores`.`codigo_vendedor` AS `codigo_vendedor`, `vendedores`.`vendedor` AS `vendedor`, `vendedores`.`estado` AS `estado` FROM `vendedores`;
 
 --
 -- Índices para tablas volcadas
